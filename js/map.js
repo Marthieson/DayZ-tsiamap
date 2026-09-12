@@ -18,7 +18,7 @@ const map = L.map('map', {
   maxBounds: [[0, 0], [MAP_SIZE, MAP_SIZE]],
 });
 
-L.imageOverlay('assets/satellite.png',
+L.imageOverlay('assets/satellite.jpg',
   [[0, 0], [MAP_SIZE, MAP_SIZE]],
   { opacity: 1 }
 ).addTo(map);   
