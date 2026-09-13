@@ -333,14 +333,14 @@ drawGrid();
 const gridBtn = document.createElement('button');
 gridBtn.textContent = 'Grid';
 gridBtn.style.cssText = `
-  position: fixed; bottom: 12px; right: 12px; z-index: 1000;
+  position: fixed; bottom: 12px; left: 196px; z-index: 1000;   
   padding: 6px 12px; border: 1px solid #333; border-radius: 4px;
-  background: rgba(10,10,10,0.8); color: #888;
+  background: rgba(10,10,10,0.8); color: #eee;
   font: 12px 'Consolas', monospace; cursor: pointer;
 `;
 gridBtn.addEventListener('click', () => {
 	gridVisible = !gridVisible;
-	gridBtn.style.color = gridVisible ? '#888' : '#444';
+	gridBtn.style.color = gridVisible ? '#eee' : '#bbb';
 	drawGrid();
 });
 document.body.appendChild(gridBtn);
