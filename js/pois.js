@@ -1,6 +1,6 @@
 // ── POI Types & Icons ───────────────────────────────────
 const POI_TYPES = {
-  player_spawns: 		{ label: 'Player Spawns', 		icon: '🧍', color: '#27ae60' },   
+  player_spawns: 		{ label: 'Player Spawns', 		icon: '🧍', color: '#ccccc' },   
   cities:        		{ label: 'City',        		icon: '🏙️', color: '#3498db' },
   villages:      		{ label: 'Village',      		icon: '🏘️', color: '#2ecc71' },
   industrial: 			{ label: 'Industrial Sites', 	icon: '🏭', color: '#607d8b' }, 
@@ -153,15 +153,40 @@ sidebar.style.cssText = `
 `;
 document.body.appendChild(sidebar);
 
-// Filter panel
+// ── Filter Panel (collapsible) ──────────────────────────
 const panel = document.createElement('div');
 panel.id = 'filter-panel';
 panel.style.cssText = `
   background: rgba(0,0,0,0.8); color: #fff;
-  padding: 12px 16px; border-radius: 6px;
-  font: 13px/1.8 sans-serif;
+  border-radius: 6px; font: 13px/1.8 sans-serif;
+  overflow: hidden;
 `;
-sidebar.appendChild(panel);   
+sidebar.appendChild(panel);
+
+// Toggle header
+const panelHeader = document.createElement('div');
+panelHeader.style.cssText = `
+  padding: 10px 16px; cursor: pointer;
+  font-weight: bold; font-size: 13px;
+  display: flex; justify-content: space-between; align-items: center;
+  user-select: none;
+`;
+panelHeader.innerHTML = `<span>Filters</span><span id="panel-arrow">▼</span>`;
+panel.appendChild(panelHeader);
+
+// Collapsible body
+const panelBody = document.createElement('div');
+panelBody.id = 'panel-body';
+panelBody.style.cssText = 'padding: 0 16px 12px;';
+panel.appendChild(panelBody);
+
+// Toggle
+let panelOpen = true;
+panelHeader.addEventListener('click', () => {
+  panelOpen = !panelOpen;
+  panelBody.style.display = panelOpen ? 'block' : 'none';
+  document.getElementById('panel-arrow').textContent = panelOpen ? '▼' : '▶';
+});   
 
 // ── Filter Panel (grouped) ──────────────────────────────
 const GROUPS = [
@@ -175,7 +200,7 @@ GROUPS.forEach(group => {
 	const header = document.createElement('div');
 	header.style.cssText = 'font-size:12px; font-weight:bold; color:#EEE; text-transform:uppercase; letter-spacing:1px; margin-top:8px; margin-bottom:4px;';
 	header.textContent = group.title;
-	panel.appendChild(header);
+	panelBody.appendChild(header);
 
 	// Checkboxes for this group
 	group.types.forEach(key => {
@@ -187,7 +212,7 @@ GROUPS.forEach(group => {
 			<input type="checkbox" checked data-type="${key}" style="accent-color: ${type.color};">
 			<span>${type.icon} ${type.label}</span>
 		`;
-		panel.appendChild(label);
+		panelBody.appendChild(label);
 
 		label.querySelector('input').addEventListener('change', (e) => {
 			if (e.target.checked) activeTypes.add(key);
@@ -200,7 +225,7 @@ GROUPS.forEach(group => {
 // ── Show All / Hide All ─────────────────────────────────
 const allBtns = document.createElement('div');
 allBtns.style.cssText = 'display: flex; gap: 6px; margin-top: 8px;';
-panel.appendChild(allBtns);
+panelBody.appendChild(allBtns);
 
 const showAllBtn = document.createElement('button');
 showAllBtn.textContent = 'Show All';
@@ -278,6 +303,47 @@ function goToCoords() {
 
   setTimeout(() => map.removeLayer(tempMarker), 3000);
 }
+
+// ── Grid Overlay ────────────────────────────────────────
+const GRID_SIZE = 1000; // meters between grid lines
+let gridLayer = L.layerGroup().addTo(map);
+let gridVisible = true;
+
+function drawGrid() {
+	gridLayer.clearLayers();
+	if (!gridVisible) return;
+
+	for (let i = 0; i <= MAP_SIZE; i += GRID_SIZE) {
+		// Horizontal lines
+		const [hLat] = gameToLeaflet(0, i);
+		L.polyline([[hLat, 0], [hLat, MAP_SIZE]], {
+			color: '#fff', weight: 1, opacity: 0.5,
+		}).addTo(gridLayer);
+
+		// Vertical lines
+		const [, vLng] = gameToLeaflet(i, 0);
+		L.polyline([[0, vLng], [MAP_SIZE, vLng]], {
+			color: '#fff', weight: 1, opacity: 0.5,
+		}).addTo(gridLayer);
+	}
+}
+drawGrid();
+
+// Toggle button
+const gridBtn = document.createElement('button');
+gridBtn.textContent = 'Grid';
+gridBtn.style.cssText = `
+  position: fixed; bottom: 12px; right: 12px; z-index: 1000;
+  padding: 6px 12px; border: 1px solid #333; border-radius: 4px;
+  background: rgba(10,10,10,0.8); color: #888;
+  font: 12px 'Consolas', monospace; cursor: pointer;
+`;
+gridBtn.addEventListener('click', () => {
+	gridVisible = !gridVisible;
+	gridBtn.style.color = gridVisible ? '#888' : '#444';
+	drawGrid();
+});
+document.body.appendChild(gridBtn);
 
 document.getElementById('coord-go').addEventListener('click', goToCoords);
 document.getElementById('coord-field').addEventListener('keydown', (e) => {
