@@ -1,12 +1,15 @@
 // ── POI Types & Icons ───────────────────────────────────
 const POI_TYPES = {
-  player_spawns: 		{ label: 'Player Spawns', 		icon: '🧍', color: '#008000' },   
+  player_spawns: 		{ label: 'Player Spawn', 		icon: '🧍', color: '#008000' },   
   cities:        		{ label: 'City',        		icon: '🏙️', color: '#3498db' },
   villages:      		{ label: 'Village',      		icon: '🏘️', color: '#2ecc71' },
-  industrial: 			{ label: 'Industrial Sites', 	icon: '🏭', color: '#607d8b' }, 
-  military_zones: 		{ label: 'Military Zones', 		icon: '🎖️', color: '#b71c1c' },   
-  military_checkpoints: { label: 'Military Checkpoints',icon: '🚧', color: '#b71c1c' },     
+  industrial: 			{ label: 'Industrial Site', 	icon: '🏭', color: '#607d8b' }, 
+  medical: 				{ label: 'Medical', 			icon: '💊', color: '#e74c3c' },
+  police_stations: 		{ label: 'Police HQ', 			icon: '🚨', color: '#1a5276' },
+  military_zones: 		{ label: 'Military Zone', 		icon: '🎖️', color: '#b71c1c' },   
+  military_checkpoints: { label: 'Military Checkpoint', icon: '🚧', color: '#b71c1c' },     
   wells:         		{ label: 'Well',         		icon: '💧', color: '#1abc9c' },
+  fuel_stations:        { label: 'Fuel Station',        icon: '⛽', color: '#f39c12' },
   secret_locations: 	{ label: 'Unknown Location', 	icon: '❓', color: '#9b59b6' },   
   helicrashes:   		{ label: 'Helicrash',   		icon: '🚁', color: '#e74c3c' },
   military_convoy: 		{ label: 'Convoy', 				icon: '🚚', color: '#8e44ad' },
@@ -177,7 +180,11 @@ panel.appendChild(panelHeader);
 // Collapsible body
 const panelBody = document.createElement('div');
 panelBody.id = 'panel-body';
-panelBody.style.cssText = 'padding: 0 16px 12px;';
+panelBody.style.cssText = `
+  padding: 0 16px 12px;
+  max-height: calc(100vh - 100px);
+  overflow-y: auto;
+`;
 panel.appendChild(panelBody);
 
 // Toggle
@@ -190,7 +197,7 @@ panelHeader.addEventListener('click', () => {
 
 // ── Filter Panel (grouped) ──────────────────────────────
 const GROUPS = [
-	{ title: 'Locations', types: ['player_spawns', 'cities', 'villages', 'industrial', 'military_zones', 'military_checkpoints', 'wells', 'secret_locations'] },
+	{ title: 'Locations', types: ['player_spawns', 'cities', 'villages', 'industrial', 'medical', 'police_stations', 'military_zones', 'military_checkpoints', 'wells', 'fuel_stations', 'secret_locations'] },
 	{ title: 'Events', types: ['helicrashes', 'military_convoy', 'police', 'car_spawns', 'trucks', 'boat_spawns', 'wooden_planks', 'gas_zone', 'contaminated_zones'] },
 	{ title: 'Animals', types: ['hens', 'sheep', 'goats', 'wolves', 'bears', 'deer'] },
 ];
@@ -262,7 +269,7 @@ coordBox.innerHTML = `
   <div style="display:flex; gap:6px;">
     <input id="coord-field" type="text" placeholder="2480.5; 3660.2"
       style="
-        width: 140px; padding: 4px 8px;
+        width: 110px; padding: 4px 8px;
         border: none; border-radius: 3px;
         background: #2c3e50; color: #fff;
         font: 13px monospace;
@@ -275,7 +282,16 @@ coordBox.innerHTML = `
       ">Go</button>
   </div>
 `;
-sidebar.appendChild(coordBox);
+
+coordBox.style.cssText = `
+  position: fixed; bottom: 50px; left: 12px; z-index: 1000;
+  background: rgba(10,10,10,0.9); color: #ccc;
+  border: 1px solid #333; border-radius: 4px;
+  padding: 10px 14px;
+  font: 12px 'Consolas', monospace;
+  width: 180px;
+`;
+document.body.appendChild(coordBox);
 
 function goToCoords() {
   const val = document.getElementById('coord-field').value.trim();
@@ -285,18 +301,18 @@ function goToCoords() {
   const [x, y] = parts;
   const [lat, lng] = gameToLeaflet(x, y);
 
-  map.flyTo([lat, lng], Math.max(map.getZoom(), 6), { duration: 0.5 });
+  map.flyTo([lat, lng], Math.max(map.getZoom(), 0), { duration: 0.5 });
 
   // Drop a temporary marker
   const tempMarker = L.marker([lat, lng], {
     icon: L.divIcon({
       className: '',
       html: `<div style="
-        width: 12px; height: 12px;
+        width: 24px; height: 24px;
         background: #fff; border: 3px solid #e74c3c;
         border-radius: 50%;
       "></div>`,
-      iconSize: [12, 12],
+      iconSize: [24, 24],
       iconAnchor: [6, 6],
     })
   }).addTo(map);
