@@ -11,13 +11,16 @@ body { overflow: hidden; }
   position: fixed;
   bottom: 12px;
   left: 12px;
-  background: rgba(0,0,0,0.7);
-  color: #fff;
-  font: 14px monospace;
+  background: rgba(10,10,10,0.9);
+  color: #eee;
+  font: 12px 'Consolas', monospace;
   padding: 6px 10px;
+  border: 1px solid #333;
   border-radius: 4px;
   z-index: 1000;
-}   
+  width: 180px;
+  text-align: right;
+}
 
 #map {
   --icon-size: 24px;
