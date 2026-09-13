@@ -1,6 +1,6 @@
 // ── POI Types & Icons ───────────────────────────────────
 const POI_TYPES = {
-  player_spawns: 		{ label: 'Player Spawns', 		icon: '🧍', color: '#ccccc' },   
+  player_spawns: 		{ label: 'Player Spawns', 		icon: '🧍', color: '#008000' },   
   cities:        		{ label: 'City',        		icon: '🏙️', color: '#3498db' },
   villages:      		{ label: 'Village',      		icon: '🏘️', color: '#2ecc71' },
   industrial: 			{ label: 'Industrial Sites', 	icon: '🏭', color: '#607d8b' }, 
@@ -190,7 +190,7 @@ panelHeader.addEventListener('click', () => {
 
 // ── Filter Panel (grouped) ──────────────────────────────
 const GROUPS = [
-	{ title: 'Locations', types: ['cities', 'villages', 'industrial', 'military_zones', 'military_checkpoints', 'wells', 'secret_locations'] },
+	{ title: 'Locations', types: ['player_spawns', 'cities', 'villages', 'industrial', 'military_zones', 'military_checkpoints', 'wells', 'secret_locations'] },
 	{ title: 'Events', types: ['helicrashes', 'military_convoy', 'police', 'car_spawns', 'trucks', 'boat_spawns', 'wooden_planks', 'gas_zone', 'contaminated_zones'] },
 	{ title: 'Animals', types: ['hens', 'sheep', 'goats', 'wolves', 'bears', 'deer'] },
 ];
