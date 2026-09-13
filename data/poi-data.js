@@ -157,6 +157,40 @@ const POI_DATA = {
 		{ name: "Dhimran Powerstation", x: 3552.62, y: 8748.28 },
 	],   
 
+	medical: [
+		{ name: "Medical", x: 7637.30, y: 1900.15 },
+		{ name: "Medical", x: 6250.83, y: 11244.09 },
+		{ name: "Medical", x: 5610.58, y: 9929.25 },
+		{ name: "Medical", x: 11034.33, y: 10956.29 },
+		{ name: "Medical", x: 5861.09, y: 11215.23 },
+		{ name: "Medical", x: 3793.64, y: 8968.95 },
+		{ name: "Medical", x: 4255.54, y: 6624.00 },
+		{ name: "Medical", x: 2635.16, y: 5083.95 },
+		{ name: "Medical", x: 8341.04, y: 1859.36 },
+		{ name: "Medical", x: 10502.72, y: 6423.14 },
+		{ name: "Medical", x: 7356.29, y: 1742.96 },
+		{ name: "Medical", x: 7568.55, y: 9319.83 },
+		{ name: "Medical", x: 1858.13, y: 11942.06 },
+		{ name: "Medical", x: 6226.79, y: 11260.57 },
+		{ name: "Medical", x: 5594.63, y: 8911.64 },
+		{ name: "Medical", x: 5297.04, y: 6153.45 },
+		{ name: "Medical", x: 6794.41, y: 4830.17 },
+		{ name: "Medical", x: 9829.60, y: 11404.45 },
+		{ name: "Medical", x: 11193.43, y: 11093.25 },
+	],
+
+	police_stations: [
+		{ name: "Police HQ", x: 7305.22, y: 1713.69 },
+		{ name: "Police HQ", x: 11209.83, y: 11017.47 },
+		{ name: "Police HQ", x: 7277.67, y: 1709.48 },
+		{ name: "Police HQ", x: 6165.31, y: 11193.49 },
+		{ name: "Police HQ", x: 5708.57, y: 8929.33 },
+		{ name: "Police HQ", x: 7610.06, y: 9283.09 },
+		{ name: "Police HQ", x: 1851.65, y: 11978.27 },
+		{ name: "Police HQ", x: 5263.79, y: 6180.39 },
+		{ name: "Police HQ", x: 9874.66, y: 11503.52 },
+	],
+
 	military_zones: [
 		{ name: "Laschkar Radarbase", x: 11243.09, y: 9108.92 },
 		{ name: "Rasman Airbase", x: 5754.95, y: 11372.86 },
@@ -193,7 +227,25 @@ const POI_DATA = {
 		{ name: "Sakhee Checkpoint", x: 3708, y: 4545 },
 		{ name: "Hamiqqah Checkpoint", x: 1397, y: 5812 },
 	],  
-
+	
+	fuel_stations: [
+		{ name: "Fuel Station", x: 7492.30, y: 1819.60 },
+		{ name: "Fuel Station", x: 7667.96, y: 9278.16 },
+		{ name: "Fuel Station", x: 3079.24, y: 9850.56 },
+		{ name: "Fuel Station", x: 5337.87, y: 10278.93 },
+		{ name: "Fuel Station", x: 5547.98, y: 9276.15 },
+		{ name: "Fuel Station", x: 8249.23, y: 7805.43 },
+		{ name: "Fuel Station", x: 5636.81, y: 11081.97 },
+		{ name: "Fuel Station", x: 2006.81, y: 11725.97 },
+		{ name: "Fuel Station", x: 4297.25, y: 10725.99 },
+		{ name: "Fuel Station", x: 3546.97, y: 4196.96 },
+		{ name: "Fuel Station", x: 5832.89, y: 5775.48 },
+		{ name: "Fuel Station", x: 8761.13, y: 5173.37 },
+		{ name: "Fuel Station", x: 10651.84, y: 11025.60 },
+		{ name: "Fuel Station", x: 11184.20, y: 10992.36 },
+		{ name: "Fuel Station", x: 10422.94, y: 6325.38 },
+	],	
+	
 	secret_locations: [
 		{ name: "Unknown Location", x: 4843, y: 10572 },
 		{ name: "Unknown Location", x: 1765, y: 11942 },
@@ -813,6 +865,10 @@ const POI_DATA = {
 		{ name: "Wooden Planks", x: 9866.81, y: 4282.69 },
 		{ name: "Wooden Planks", x: 9885.80, y: 4245.36 },
 		{ name: "Wooden Planks", x: 771.61, y: 10478.09 },
+		{ name: "Wooden Planks", x: 11583.219, y: 11272.068 },
+		{ name: "Wooden Planks", x: 11575.188, y: 11320.581 },
+		{ name: "Wooden Planks", x: 11477.938, y: 11511.444 },
+		{ name: "Wooden Planks", x: 11520.578, y: 11206.406 },		
 	],   
 
 	contaminated_zones: [
