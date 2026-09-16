@@ -17,6 +17,7 @@ const POI_TYPES = {
 	helicrashes:          { label: 'Helicrash',             icon: '🚁', color: '#e74c3c' },
 	military_convoy:      { label: 'Convoy',                icon: '🚚', color: '#d4a017' },
 	police:               { label: 'Police Situation',      icon: '🚧', color: '#a93226' },
+	ambulances:           { label: 'Ambulance',             icon: '🚑', color: '#ff6b6b' },
 	car_spawns:           { label: 'Car',                   icon: '🚗', color: '#d35400' },
 	trucks:               { label: 'Truck',                 icon: '🚚', color: '#c0392b' },
 	boat_spawns:          { label: 'Boat',                  icon: '🚤', color: '#e67e22' },
@@ -203,7 +204,7 @@ panelHeader.addEventListener('click', () => {
 // ── Filter Panel (grouped) ──────────────────────────────
 const GROUPS = [
 	{ title: 'Locations', types: ['player_spawns', 'cities', 'villages', 'industrial', 'medical', 'police_stations', 'military_zones', 'military_checkpoints', 'wells', 'fuel_stations', 'secret_locations'] },
-	{ title: 'Events', types: ['helicrashes', 'military_convoy', 'police', 'car_spawns', 'trucks', 'boat_spawns', 'wooden_planks', 'gas_zone', 'contaminated_zones'] },
+	{ title: 'Events', types: ['helicrashes', 'military_convoy', 'police', 'ambulances', 'car_spawns', 'trucks', 'boat_spawns', 'wooden_planks', 'gas_zone', 'contaminated_zones'] },
 	{ title: 'Animals', types: ['hens', 'sheep', 'goats', 'wolves', 'bears', 'deer'] },
 ];
 
