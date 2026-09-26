@@ -256,6 +256,9 @@ const POI_DATA = {
 		{ name: "Unknown Location", x: 3797, y: 10991 },
 		{ name: "Unknown Location", x: 586, y: 10649 },
 		{ name: "Unknown Location", x: 6600, y: 7000 },
+		{ name: "Unknown Location", x: 7337, y: 4110 },
+		{ name: "Unknown Location", x: 2820, y: 2125 },
+		{ name: "Unknown Location", x: 740, y: 10947 },
 	],	
 	
   helicrashes: [
