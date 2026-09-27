@@ -247,20 +247,20 @@ const POI_DATA = {
 	],	
 	
 	secret_locations: [
-		{ name: "Unknown Location", x: 4843, y: 10572 },
-		{ name: "Unknown Location", x: 1765, y: 11942 },
-		{ name: "Unknown Location", x: 10310, y: 8200 },
-		{ name: "Unknown Location", x: 6266, y: 11128 },
-		{ name: "Unknown Location", x: 1178, y: 1404 },
-		{ name: "Unknown Location", x: 4681, y: 1890 },
-		{ name: "Unknown Location", x: 3797, y: 10991 },
-		{ name: "Unknown Location", x: 586, y: 10649 },
-		{ name: "Unknown Location", x: 6600, y: 7000 },
-		{ name: "Unknown Location", x: 7337, y: 4110 },
-		{ name: "Unknown Location", x: 2820, y: 2125 },
-		{ name: "Unknown Location", x: 740, y: 10947 },
-		{ name: "Unknown Location", x: 11453, y: 11040 },
-		{ name: "Unknown Location", x: 11412, y: 11569 },
+		{ name: "Unknown Location", x: 4843, y: 10572 },	//Jaglangir Underground
+		{ name: "Unknown Location", x: 4681, y: 1890 },		//ChakChak Quarry
+		{ name: "Unknown Location", x: 1178, y: 1404 },		//C130 Crashsite
+		{ name: "Unknown Location", x: 10310, y: 8200 },	//Desert Ruins
+		{ name: "Unknown Location", x: 6266, y: 11128 },	//Rasman Refugee Camp
+		{ name: "Unknown Location", x: 3797, y: 10991 },	//Al Falqas Hall
+		{ name: "Unknown Location", x: 1765, y: 11942 },	//Nur Underground
+		{ name: "Unknown Location", x: 586, y: 10649 },		//Forest Heli Crash
+		{ name: "Unknown Location", x: 11412, y: 11569 },	//Karachinar Harbour Ship
+		{ name: "Unknown Location", x: 11453, y: 11040 },	//Karachinar Mosque
+		{ name: "Unknown Location", x: 7995, y: 6186 },		//Farakkah FOB
+		{ name: "Unknown Location", x: 2862, y: 2085 },		//ChakChak Mountain Fortress
+		{ name: "Unknown Location", x: 7365, y: 4130 },		//Al Nadaya Bunker
+		{ name: "Unknown Location", x: 6600, y: 7000 },		//Villa - no glowplug spawn configured here yet
 	],	
 	
   helicrashes: [
